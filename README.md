@@ -1,4 +1,6 @@
 - This will add arbitrary options which have been submitted with the product and put them on the line items in the quote and order screens.
+- This method allows arbitrary data to be included with the product without creating custom options, and if the arbitrary options are different then the products are added to the cart as separate items
 - This will not translate the option on the order success page, or previous orders that will need to be done manually in sales/order/items/renderer/default.phtml.
-- Options will not be carried through to reorders, this needs doing.
-- There is currently no way to select which options to copy, this needs adding to the store config. Currently, only 'test_option' is looked for.
+- Options need to be manually placed back in the product form fields when a product is edited.
+- TODO: Options will not be carried through to reorders, this needs doing.
+- TODO: There is currently no way to select which options to copy, this needs adding to the store config. Currently, only 'test_option' is looked for.
