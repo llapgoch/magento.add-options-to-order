@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Llapgoch_AdditionalOptions>
+			<version>0.1.0</version>
+		</Llapgoch_AdditionalOptions>
+	</modules>
+	<global>
+		<models>
+			<llapgoch_additionaloptions>
+				<class>Llapgoch_AdditionalOptions_Model</class>
+			</llapgoch_additionaloptions>
+		</models>
+		
+		<helpers>
+			<llapgoch_additionaloptions>
+				<class>Llapgoch_AdditionalOptions_Helper</class>
+			</llapgoch_additionaloptions>
+			
+			<!-- We need to overwrite this helper for translations only -->
+			<catalog>
+				<rewrite>
+					<product_configuration>Llapgoch_AdditionalOptions_Helper_Product_Configuration</product_configuration>
+				</rewrite>
+			</catalog>
+		</helpers>
+	</global>
+	<frontend>
+		<events>
+			<!-- This is the thing that sets our arbitrary options on additional_options -->
+			<catalog_product_load_after>
+				<observers>
+					<llapgoch_additionaloptions_add>
+						<model>llapgoch_additionaloptions/observer</model>
+						<type>model</type>
+						<method>addAdditionalOptionsToProduct</method>
+					</llapgoch_additionaloptions_add>
+				</observers>
+			</catalog_product_load_after>
+			
+			<sales_convert_quote_item_to_order_item>
+			    <observers>
+			        <llapgoch_additionaloptions_add>
+			            <type>model</type>
+			            <class>llapgoch_additionaloptions/observer</class>
+			            <method>addAdditonalOptionsToOrder</method>
+			        </llapgoch_additionaloptions_add>
+			    </observers>
+			</sales_convert_quote_item_to_order_item>
+		</events>
+		
+		<translate>
+			<modules>
+				<llapgoch_additionaloptions>
+					<files>
+						<default>Llapgoch_Additional_Options.csv</default>
+					</files>
+				</llapgoch_additionaloptions>
+			</modules>
+		</translate>
+	</frontend>
+</config>
